@@ -8,30 +8,15 @@ const Hero = () => {
     /*** on load page animation of clouds ***/
   }
 
-  const [scope01, animate] = useAnimate();
+  const [scope, animate] = useAnimate();
 
-  /*const sequence = [
-    [".cloud1", {y: -200}, {duration: 2}],
-    [".cloud2", {y: -200}, {duration: 2, at: 0.1}],
-    [".cloud1", {scale: 1.5, x: -100}, {duration: 8, at: 0.1}],
-    [".cloud2", {scale: 1.5, x: 200}, {duration: 8, at: 0.1}],
-  ];*/
-
-  /*const sequence = [
-    [".cloud1", {y: [-200, 0]}, {duration: 2}],
-    [".cloud2", {y: [-200, 0]}, {duration: 2, delay: 0.1}],
-    [".cloud1", {scale: [1, 1.5], x: [0, -100]}, {duration: 8}],
-    [".cloud2", {scale: [1, 1.5], x: [0, 200]}, {duration: 8}],
-  ];
-
-  useEffect(() => {
-    animate(sequence);
-  }, []);*/
   const sequence = async () => {
-    await animate(".cloud1", {y: -200}, {duration: 2});
-    await animate(".cloud2", {y: -200}, {duration: 2, delay: 0.1});
-    await animate(".cloud1", {scale: 1.5, x: -100}, {duration: 8});
-    await animate(".cloud2", {scale: 1.5, x: 200}, {duration: 8});
+    await Promise.all([
+      animate(".cloud1", {y: -200}, {duration: 2}),
+      animate(".cloud2", {y: -200}, {duration: 2, delay: 0.5}),
+      animate(".cloud1", {scale: 1.5, x: -100}, {duration: 8, delay: 0.5}),
+      animate(".cloud2", {scale: 1.5, x: 200}, {duration: 8, delay: 0.5}),
+    ]);
   };
 
   useEffect(() => {
@@ -41,20 +26,9 @@ const Hero = () => {
     /*** on scroll page animation of hero ***/
   }
   const {scrollY} = useScroll();
-
-  /*const {scrollYProgress} = useScroll();*/
-
-  /*const temporaryScaleProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });*/
-
   const scale = useTransform(scrollY, [70, 500], [1, 0.8]);
-
   const backgroundScale = useTransform(scrollY, [70, 500], [1.05, 1]);
-  //const backgroundScale = useTransform(temporaryScaleProgress, [0, 1], [1.3, 1]);
-  /*const scale = useTransform(temporaryScaleProgress, [0, 1], [1, 0.6]);*/
+
   return (
     <>
       <main>
@@ -138,21 +112,26 @@ const Hero = () => {
             <div className="padding-global">
               <motion.h1
                 initial={{y: 40, opacity: 0, scale: 1.0}}
-                animate={{y: 0, opacity: 1, scale: 1}}
+                animate={{y: 0, opacity: 1, scale: 1}} /* animation on load */
                 transition={{duration: 0.75, ease: "easeOut"}}
-                style={{scale}}
+                style={{scale}} /* second animation during scroll */
                 className="home-hero_hero-text">
                 We can do more than co-exist.
               </motion.h1>
             </div>
             <div className="home-hero_background-video-wrapper">
-              <motion.div className="home-hero_background-image" style={{scale: backgroundScale}}>
+              <motion.div
+                className="home-hero_background-image"
+                initial={{scale: 1.0}}
+                animate={{scale: 1.05}}
+                transition={{duration: 0.75, ease: "easeOut"}} /* animation on load */
+                style={{scale: backgroundScale}}>
                 <Image src="/images/mountains.jpg" alt="Your image" layout="fill" objectFit="cover" objectPosition="top" />
               </motion.div>
             </div>
           </header>
           <div className="home-hero_bg-clouds-wrapper">
-            <div className="home-hero_clouds" ref={scope01}>
+            <div className="home-hero_clouds" ref={scope}>
               <div className="cloud1">
                 <motion.div className="relative overflow-hidden h-full w-full cloud01" initial={{y: 200}}>
                   <Image src="/images/cloud1.png" alt="Your image" layout="fill" objectFit="contain" objectPosition="center" className="animate-zoomLoop" />

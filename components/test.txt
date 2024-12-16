@@ -1,0 +1,22 @@
+  /*const sequence = [
+    [".cloud1", {y: -200}, {duration: 2}],
+    [".cloud2", {y: -200}, {duration: 2, at: 0.1}],
+    [".cloud1", {scale: 1.5, x: -100}, {duration: 8, at: 0.1}],
+    [".cloud2", {scale: 1.5, x: 200}, {duration: 8, at: 0.1}],
+  ];
+
+  /*useEffect(() => {
+    animate(sequence);
+  }, []);*/
+
+
+  /*const {scrollYProgress} = useScroll();*/
+
+  /*const temporaryScaleProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });*/
+
+    //const backgroundScale = useTransform(temporaryScaleProgress, [0, 1], [1.3, 1]);
+  /*const scale = useTransform(temporaryScaleProgress, [0, 1], [1, 0.6]);*/
