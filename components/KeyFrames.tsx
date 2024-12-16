@@ -8,7 +8,7 @@ const KeyFrames = () => {
         width="200"
         height="200"
         viewBox="0 0 200 200"
-        xslns="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
         initial={{fill: "#ff0000"}}
         animate={{scale: [null, 2, 1.5, 3], fill: "#0000ff"}}
         transition={{duration: 3, times: [0, 0.75, 0.9, 1]}}

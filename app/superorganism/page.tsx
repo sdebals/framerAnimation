@@ -8,7 +8,6 @@ import HeaderIsPortfolio from "@/components/header-is-portfolio";
 import Hero from "@/components/Hero";
 import SectionIsFounder from "@/components/section-is-founder";
 import SectionIsInvestment from "@/components/section-is-investment";
-import ReactLenis from "lenis/react";
 
 export default function ScrollPage() {
   return (

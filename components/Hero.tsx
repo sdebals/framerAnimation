@@ -1,6 +1,6 @@
 "use client";
-import {motion, useScroll, useAnimate, useTransform, useSpring} from "framer-motion";
-import {useEffect, useRef} from "react";
+import {motion, useScroll, useAnimate, useTransform} from "framer-motion";
+import {useEffect} from "react";
 import Image from "next/image";
 
 const Hero = () => {
@@ -10,17 +10,33 @@ const Hero = () => {
 
   const [scope01, animate] = useAnimate();
 
-  const sequence = [
+  /*const sequence = [
     [".cloud1", {y: -200}, {duration: 2}],
     [".cloud2", {y: -200}, {duration: 2, at: 0.1}],
     [".cloud1", {scale: 1.5, x: -100}, {duration: 8, at: 0.1}],
     [".cloud2", {scale: 1.5, x: 200}, {duration: 8, at: 0.1}],
+  ];*/
+
+  /*const sequence = [
+    [".cloud1", {y: [-200, 0]}, {duration: 2}],
+    [".cloud2", {y: [-200, 0]}, {duration: 2, delay: 0.1}],
+    [".cloud1", {scale: [1, 1.5], x: [0, -100]}, {duration: 8}],
+    [".cloud2", {scale: [1, 1.5], x: [0, 200]}, {duration: 8}],
   ];
 
   useEffect(() => {
     animate(sequence);
-  }, []);
+  }, []);*/
+  const sequence = async () => {
+    await animate(".cloud1", {y: -200}, {duration: 2});
+    await animate(".cloud2", {y: -200}, {duration: 2, delay: 0.1});
+    await animate(".cloud1", {scale: 1.5, x: -100}, {duration: 8});
+    await animate(".cloud2", {scale: 1.5, x: 200}, {duration: 8});
+  };
 
+  useEffect(() => {
+    sequence();
+  }, []);
   {
     /*** on scroll page animation of hero ***/
   }

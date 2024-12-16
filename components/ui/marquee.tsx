@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import {cn} from "@/lib/utils";
 
 interface MarqueeProps {
   className?: string;
@@ -7,18 +7,11 @@ interface MarqueeProps {
   children?: React.ReactNode;
   vertical?: boolean;
   repeat?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
-export default function Marquee({
-  className,
-  reverse,
-  pauseOnHover = false,
-  children,
-  vertical = false,
-  repeat = 4,
-  ...props
-}: MarqueeProps) {
+export default function Marquee({className, reverse, pauseOnHover = false, children, vertical = false, repeat = 4, ...props}: MarqueeProps) {
   return (
     <div
       {...props}
@@ -28,9 +21,8 @@ export default function Marquee({
           "flex-row": !vertical,
           "flex-col": vertical,
         },
-        className,
-      )}
-    >
+        className
+      )}>
       {Array(repeat)
         .fill(0)
         .map((_, i) => (
@@ -41,8 +33,7 @@ export default function Marquee({
               "animate-marquee-vertical flex-col": vertical,
               "group-hover:[animation-play-state:paused]": pauseOnHover,
               "[animation-direction:reverse]": reverse,
-            })}
-          >
+            })}>
             {children}
           </div>
         ))}
