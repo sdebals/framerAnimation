@@ -116,7 +116,7 @@ const Hero = () => {
                 transition={{duration: 0.75, ease: "easeOut"}}
                 style={{scale}} /* second animation during scroll */
                 className="home-hero_hero-text">
-                We can do more than co-exist.
+                We can do more than co-exist test.
               </motion.h1>
             </div>
             <div className="home-hero_background-video-wrapper">
