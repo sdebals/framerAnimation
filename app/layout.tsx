@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import {ReactLenis} from "@/lib/lenis";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,10 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navigation></Navigation>
-        {children}
-      </body>
+      <ReactLenis root>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <Navigation></Navigation>
+          {children}
+        </body>
+      </ReactLenis>
     </html>
   );
 }

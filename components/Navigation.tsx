@@ -35,9 +35,6 @@ const Navigation = () => {
           <Link href="/superorganism" className={`${pathname === "/superorganism" ? "text-lime-600" : ""}`}>
             Superorganism
           </Link>
-          <Link href="/lenis" className={`${pathname === "/lenis" ? "text-lime-600" : ""}`}>
-            Lenis
-          </Link>
         </div>
       </nav>
     </>
