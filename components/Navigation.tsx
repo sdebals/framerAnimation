@@ -26,12 +26,6 @@ const Navigation = () => {
           <Link href="/staggered" className={`${pathname === "/staggered" ? "text-lime-600" : ""}`}>
             Staggered
           </Link>
-          <Link href="/sequence" className={`${pathname === "/sequence" ? "text-lime-600" : ""}`}>
-            Sequence
-          </Link>
-          <Link href="/animateactions" className={`${pathname === "/animateactions" ? "text-lime-600" : ""}`}>
-            Animate Actions
-          </Link>
           <Link href="/superorganism" className={`${pathname === "/superorganism" ? "text-lime-600" : ""}`}>
             Superorganism
           </Link>
